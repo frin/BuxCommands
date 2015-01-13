@@ -1,0 +1,27 @@
+name: BuxCommands
+main: net.buxville.rahman.buxcommands.BuxCommands
+version: 0.5
+commands:
+   alcmene:
+      description: alcmene command
+   galateyah:
+      description: gala command
+   groll:
+      description: groll command
+   hat:
+      description: hat command
+   mumnut:
+      description: mumnut command
+   rahman:
+      description: rah command
+   raven:
+      description: raven command
+   who:
+      description: who command
+permissions:
+   buxcommands.groll:
+     description: Gives access to groll command
+   buxcommands.hat:
+     description: Gives access to hat command
+   buxcommands.raven:
+     description: Gives access to hat command
