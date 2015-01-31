@@ -29,7 +29,7 @@ public class GetRank {
 	    	  if (OfflinetargetPlayer == null || !OfflinetargetPlayer.hasPlayedBefore()) {
 		          p.sendMessage(ChatColor.RED + "Unknown Player: " + args[0]);
 		          return;
-		        }
+	    	  }
 	      }
 	      String[] groups = BuxCommands.getPerms().getPlayerGroups(null, OfflinetargetPlayer);
 	      targetPlayerName = OfflinetargetPlayer.getName();
@@ -51,7 +51,6 @@ public class GetRank {
 		if (playergroups.isEmpty()) {
 		      playergroups.add("Peasant");
 		      }
-		//I'm having problems here Xslare, with getting the colors to change 
 		p.sendMessage(String.format("%s%s : %s", new Object[] { targetPlayerName + "'s ranks are", ChatColor.GREEN, join(playergroups, ", ")}));
 	    return;
 	}

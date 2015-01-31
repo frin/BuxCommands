@@ -28,7 +28,7 @@ public class BuxCommands extends JavaPlugin {
 		if (!setupPermissions()) {
 		      log(Level.SEVERE, "Disabled - No Permissions Plugin");
 		      getServer().getPluginManager().disablePlugin(this);
-		    }
+		}
 		this.getCommand("acc").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("den").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("getrank").setExecutor(new BuxCommandsExecutor(this));
@@ -43,17 +43,17 @@ public class BuxCommands extends JavaPlugin {
 	    RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
 	    BuxCommands.setChat(((Chat)rsp.getProvider()));
 	    return BuxCommands.getChat() != null;
-	  }
+	}
 	
 	private boolean setupPermissions() {
 	    RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
 	    BuxCommands.perms = ((Permission)rsp.getProvider());
 	    return BuxCommands.getPerms() != null;
-	  }
+	}
 	
 	public void log(Level level, String message) {
 	    this.logger.log(level, this.logPrefix + message);
-	    }
+	}
 
 	public static Chat getChat() {
 		return chat;

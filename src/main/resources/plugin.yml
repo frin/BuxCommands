@@ -1,0 +1,27 @@
+name: BuxCommands
+main: net.buxville.rahman.buxcommands.BuxCommands
+version: 0.7
+commands:
+   acc:
+      description: accept command
+   den:
+      description: accept command
+   getrank:
+      description: getrank command
+   groll:
+      description: groll command
+   hat:
+      description: hat command
+   tpchere:
+      description: tpc command
+   tpahere:
+      description: tpa command
+   who:
+      description: who command
+permissions:
+   buxcommands.groll:
+     description: Gives access to groll command
+   buxcommands.hat:
+     description: Gives access to hat command
+   buxcommands.tpa:
+     description: Gives access to tpa command

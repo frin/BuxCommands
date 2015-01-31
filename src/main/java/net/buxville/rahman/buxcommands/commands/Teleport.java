@@ -43,7 +43,7 @@ public class Teleport {
 	            p.sendMessage(ChatColor.RED + "Invalid player.");
 	          }
 	          return;
-	        }
+		}
 	}
 	//TPAll command
 	public static void TPACommand(Player p) {

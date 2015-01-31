@@ -11,7 +11,7 @@ public class GlobalRoll {
 		if (args.length != 2) {
 		      p.sendMessage(ChatColor.RED + "Usage: /groll  <min> <max>");
 		      return;
-		    }
+		}
 			final SecureRandom randomNumberGenerator = new SecureRandom();
 		    int min = 0;
 		    int max = 0;
