@@ -88,6 +88,15 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				p.sendMessage(chatPrefix + ChatColor.RED + "You do not have permissions to do this!");				return false;
 			}
 		}
+		//Tp to a player Command
+		if((cmd.getName().equalsIgnoreCase("tpcto"))) {
+			if ((p instanceof Player) && (p.hasPermission("buxcommands.tpcto"))) {
+				Teleport.TPCto(p,args);
+				return false;
+			} else {
+				p.sendMessage(chatPrefix + ChatColor.RED + "You do not have permissions to do this!");				return false;
+			}
+		}
 		//Who Command
 		if((cmd.getName().equalsIgnoreCase("who"))) {
 			if (p instanceof Player) {

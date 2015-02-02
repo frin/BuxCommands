@@ -34,8 +34,9 @@ public class BuxCommands extends JavaPlugin {
 		this.getCommand("getrank").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("groll").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("hat").setExecutor(new BuxCommandsExecutor(this));
-		this.getCommand("tpchere").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("tpahere").setExecutor(new BuxCommandsExecutor(this));
+		this.getCommand("tpchere").setExecutor(new BuxCommandsExecutor(this));
+		this.getCommand("tpcto").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("who").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("whohide").setExecutor(new BuxCommandsExecutor(this));
 	}
