@@ -43,7 +43,7 @@ public class GetRank {
 		for (String group : groups) {
 			String[] splitGroup = group.split("-");
 			if (splitGroup.length > 1) {
-				playergroups.add(splitGroup[1] + " Level " + splitGroup[1]);
+				playergroups.add(splitGroup[0] + " Level " + splitGroup[1]);
 			} else {
 				playergroups.add(group);
 			}
@@ -51,7 +51,7 @@ public class GetRank {
 		if (playergroups.isEmpty()) {
 		      playergroups.add("Peasant");
 		      }
-		p.sendMessage(String.format("%s%s : %s", new Object[] { targetPlayerName + "'s ranks are", ChatColor.GREEN, join(playergroups, ", ")}));
+		p.sendMessage(String.format(ChatColor.GREEN + "%s%s: %s", new Object[] { targetPlayerName + "'s ranks are", ChatColor.GREEN, join(playergroups, ", ")}));
 	    return;
 	}
 	private static String join(List<String> elems, String delimiter) {

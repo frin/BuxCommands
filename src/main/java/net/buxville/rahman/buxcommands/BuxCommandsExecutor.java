@@ -97,6 +97,15 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				p.sendMessage(chatPrefix + ChatColor.RED + "You do not have permissions to do this!");				return false;
 			}
 		}
+		//Who Hide Command
+		if((cmd.getName().equalsIgnoreCase("whohide"))) {
+			if ((p instanceof Player) && (p.hasPermission("buxcommands.whohide"))) {
+				Who.WhoHide(p);
+				return false;
+			} else {
+				p.sendMessage(chatPrefix + ChatColor.RED + "You do not have permissions to do this!");				return false;
+			}
+		}
 		return false;
 	}
 

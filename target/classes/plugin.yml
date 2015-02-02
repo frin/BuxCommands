@@ -1,6 +1,6 @@
 name: BuxCommands
 main: net.buxville.rahman.buxcommands.BuxCommands
-version: 0.7
+version: 0.8
 commands:
    acc:
       description: accept command
@@ -18,6 +18,8 @@ commands:
       description: tpa command
    who:
       description: who command
+   whohide:
+      description: who command
 permissions:
    buxcommands.groll:
      description: Gives access to groll command
@@ -25,3 +27,5 @@ permissions:
      description: Gives access to hat command
    buxcommands.tpa:
      description: Gives access to tpa command
+   buxcommands.whohide:
+     description: Gives access to whohide command
