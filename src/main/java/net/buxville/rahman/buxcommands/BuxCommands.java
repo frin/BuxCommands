@@ -21,13 +21,14 @@ public class BuxCommands extends JavaPlugin {
 	public static Chat chat = null;
 	public static Permission perms = null;
 	private final Logger logger = Logger.getLogger("Minecraft.BuxCommands");
+
 	public void onEnable() {
 		if (!setupChat()) {
-		      log(Level.WARNING, "Warn - No Chat Plugin");
-		 }
+			log(Level.WARNING, "Warn - No Chat Plugin");
+		}
 		if (!setupPermissions()) {
-		      log(Level.SEVERE, "Disabled - No Permissions Plugin");
-		      getServer().getPluginManager().disablePlugin(this);
+			log(Level.SEVERE, "Disabled - No Permissions Plugin");
+			getServer().getPluginManager().disablePlugin(this);
 		}
 		this.getCommand("acc").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("den").setExecutor(new BuxCommandsExecutor(this));
@@ -40,21 +41,23 @@ public class BuxCommands extends JavaPlugin {
 		this.getCommand("who").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("whohide").setExecutor(new BuxCommandsExecutor(this));
 	}
-	
+
 	public boolean setupChat() {
-	    RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
-	    BuxCommands.setChat(((Chat)rsp.getProvider()));
-	    return BuxCommands.getChat() != null;
+		RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager()
+				.getRegistration(Chat.class);
+		BuxCommands.setChat(((Chat) rsp.getProvider()));
+		return BuxCommands.getChat() != null;
 	}
-	
+
 	private boolean setupPermissions() {
-	    RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
-	    BuxCommands.perms = ((Permission)rsp.getProvider());
-	    return BuxCommands.getPerms() != null;
+		RegisteredServiceProvider<Permission> rsp = getServer()
+				.getServicesManager().getRegistration(Permission.class);
+		BuxCommands.perms = ((Permission) rsp.getProvider());
+		return BuxCommands.getPerms() != null;
 	}
-	
+
 	public void log(Level level, String message) {
-	    this.logger.log(level, this.logPrefix + message);
+		this.logger.log(level, this.logPrefix + message);
 	}
 
 	public static Chat getChat() {
@@ -64,7 +67,7 @@ public class BuxCommands extends JavaPlugin {
 	public static void setChat(Chat chat) {
 		BuxCommands.chat = chat;
 	}
-	
+
 	public static Permission getPerms() {
 		return perms;
 	}
@@ -72,10 +75,9 @@ public class BuxCommands extends JavaPlugin {
 	public static void setPerms(Permission perm) {
 		BuxCommands.perms = perm;
 	}
-	
+
 	public void onDisable() {
 		System.out.println(logPrefix + " shutting down.");
 	}
-
 
 }

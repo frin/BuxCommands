@@ -5,7 +5,7 @@ commands:
    acc:
       description: accept command
    den:
-      description: accept command
+      description: deny command
    getrank:
       description: getrank command
    groll:
@@ -21,7 +21,7 @@ commands:
    who:
       description: who command
    whohide:
-      description: who command
+      description: whohide command
 permissions:
    buxcommands.groll:
      description: Gives access to groll command
