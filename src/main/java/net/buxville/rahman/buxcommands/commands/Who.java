@@ -41,7 +41,7 @@ public class Who {
 		}
 		if (!playerhide.contains(p.getUniqueId())) {
 			playerhide.add(p.getUniqueId());
-			p.sendMessage(ChatColor.GREEN + "Now invisivle to players!");
+			p.sendMessage(ChatColor.GREEN + "Now invisible to players!");
 			return;
 		} else {
 			p.sendMessage(ChatColor.RED + "Error.");
