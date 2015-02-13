@@ -18,18 +18,21 @@ public class Who {
 		// Who code block
 		Player[] players = Bukkit.getServer().getOnlinePlayers();
 		StringBuilder sb = new StringBuilder();
-		sb.append(ChatColor.DARK_GREEN).append("Players Online (")
-				.append(players.length - playerhide.size()).append("): ");
+		StringBuilder sb2 = new StringBuilder();
+		int i = 0;
 		for (Player player : players) {
 			if (!playerhide.contains(player.getUniqueId())) {
 				String prefix = BuxCommands.getChat().getPlayerPrefix(player);
 				String suffix = BuxCommands.getChat().getPlayerSuffix(player);
-				sb.append(prefix).append(player.getName()).append(suffix);
-				sb.append(", ");
+				sb2.append(prefix).append(player.getName()).append(suffix);
+				sb2.append(", ");
+				i = i + 1;
 			}
 		}
-		sb.delete(sb.length() - 2, sb.length());
-		p.sendMessage(sb.toString());
+		sb.append(ChatColor.DARK_GREEN).append("Players Online (").append(i)
+				.append("): ");
+		sb2.delete(sb2.length() - 2, sb2.length());
+		p.sendMessage(sb.toString() + sb2.toString());
 		return;
 	}
 
