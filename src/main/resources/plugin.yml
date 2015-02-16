@@ -1,6 +1,6 @@
 name: BuxCommands
 main: net.buxville.rahman.buxcommands.BuxCommands
-version: 0.9
+version: 1
 commands:
    acc:
       description: accept command

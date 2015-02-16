@@ -37,8 +37,7 @@ public class Who {
 			p.removeMetadata("playerhide", plugin);
 			p.sendMessage(ChatColor.GRAY + "Visible to /who.");
 		} else {
-			p.setMetadata("playerhide",
-					new FixedMetadataValue(plugin, true));
+			p.setMetadata("playerhide", new FixedMetadataValue(plugin, true));
 			p.sendMessage(ChatColor.GRAY + "Invisible to /who.");
 		}
 	}

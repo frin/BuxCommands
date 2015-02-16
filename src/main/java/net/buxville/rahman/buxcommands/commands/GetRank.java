@@ -1,6 +1,7 @@
 package net.buxville.rahman.buxcommands.commands;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import net.buxville.rahman.buxcommands.BuxCommands;
@@ -13,7 +14,7 @@ import org.bukkit.entity.Player;
 public class GetRank {
 
 	@SuppressWarnings("deprecation")
-	public static void GRCommand(Player p, String[] args) {
+	public static void GRCommand(Player p, String[] args, BuxCommands plugin) {
 		Player targetPlayer = null;
 		String targetPlayerName;
 		if (args.length == 0) {
@@ -21,7 +22,7 @@ public class GetRank {
 			String[] groups = BuxCommands.getPerms().getPlayerGroups(null,
 					targetPlayer);
 			targetPlayerName = targetPlayer.getName();
-			PermGroups(p, targetPlayerName, groups);
+			PermGroups(p, targetPlayerName, groups, plugin);
 			return;
 		} else {
 			OfflinePlayer OfflinetargetPlayer = Bukkit.getServer().getPlayer(
@@ -38,14 +39,15 @@ public class GetRank {
 			String[] groups = BuxCommands.getPerms().getPlayerGroups(null,
 					OfflinetargetPlayer);
 			targetPlayerName = OfflinetargetPlayer.getName();
-			PermGroups(p, targetPlayerName, groups);
+			PermGroups(p, targetPlayerName, groups, plugin);
 			return;
 		}
 	}
 
 	private static void PermGroups(Player p, String targetPlayerName,
-			String[] groups) {
+			String[] groups, BuxCommands plugin) {
 		List<String> playergroups = new ArrayList<String>();
+
 		for (String group : groups) {
 			String[] splitGroup = group.split("-");
 			if (splitGroup.length > 1) {
@@ -54,27 +56,45 @@ public class GetRank {
 				playergroups.add(group);
 			}
 		}
+
 		if (playergroups.isEmpty()) {
 			playergroups.add("Peasant");
 		}
-		p.sendMessage(String.format(ChatColor.GREEN + "%s%s: %s",
-				new Object[] { targetPlayerName + "'s ranks are",
-						ChatColor.GREEN, join(playergroups, ", ") }));
-		return;
-	}
 
-	private static String join(List<String> elems, String delimiter) {
 		StringBuilder sb = new StringBuilder();
-		if ((elems == null) || (elems.isEmpty())) {
-			return "";
+		sb.append(ChatColor.GREEN + targetPlayerName + "'s ranks are: ");
+		List<String> groupandcolor = plugin.getConfig().getStringList(
+				"groupandcolor");
+		HashMap<String, String> rankcolors = new HashMap<String, String>();
+		for (String thisgroup : groupandcolor) {
+			String[] splitgroup = thisgroup.split(":");
+			rankcolors.put(splitgroup[0], splitgroup[1]);
 		}
-
-		for (String str : elems) {
-			if (sb.length() > 0) {
-				sb.append(delimiter);
+		for (String indigroup : playergroups) {
+			if (rankcolors.containsKey(indigroup)) {
+				if (rankcolors.get(indigroup).contains(",")) {
+					String[] splits = rankcolors.get(indigroup).split(",");
+					StringBuilder sb2 = new StringBuilder();
+					for (String split : splits) {
+						ChatColor chatcolor = ChatColor.valueOf(split);
+						sb2.append(chatcolor.toString());
+					}
+					String str = (sb2.toString() + indigroup + ChatColor.WHITE + ", ");
+					sb.append(str);
+				} else {
+					ChatColor chatcolor = ChatColor.valueOf(rankcolors
+							.get(indigroup));
+					String str = (chatcolor + indigroup + ChatColor.WHITE + ", ");
+					sb.append(str);
+				}
+			} else {
+				String str = (ChatColor.WHITE + indigroup + ChatColor.WHITE + ", ");
+				sb.append(str);
 			}
-			sb.append(str);
 		}
-		return sb.toString();
+		String pmessage = sb.toString();
+		String finalmessage = pmessage.substring(0, pmessage.length() - 2);
+		p.sendMessage(finalmessage);
+		return;
 	}
 }

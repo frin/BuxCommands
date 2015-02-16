@@ -40,6 +40,8 @@ public class BuxCommands extends JavaPlugin {
 		this.getCommand("tpcto").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("who").setExecutor(new BuxCommandsExecutor(this));
 		this.getCommand("whohide").setExecutor(new BuxCommandsExecutor(this));
+
+		saveDefaultConfig();
 	}
 
 	public boolean setupChat() {

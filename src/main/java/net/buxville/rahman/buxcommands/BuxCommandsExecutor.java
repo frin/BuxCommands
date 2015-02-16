@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 public class BuxCommandsExecutor implements CommandExecutor {
 	public static String chatPrefix = "[BuxCommands]";
 	BuxCommands plugin;
+
 	public BuxCommandsExecutor(BuxCommands instance) {
 		plugin = instance;
 	}
@@ -53,7 +54,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 		// Hat Command
 		if ((cmd.getName().equalsIgnoreCase("getrank"))) {
 			if (p instanceof Player) {
-				GetRank.GRCommand(p, args);
+				GetRank.GRCommand(p, args, plugin);
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
@@ -131,7 +132,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 		if ((cmd.getName().equalsIgnoreCase("whohide"))) {
 			if ((p instanceof Player)
 					&& (p.hasPermission("buxcommands.whohide"))) {
-				Who.WhoHide(p,plugin);
+				Who.WhoHide(p, plugin);
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
