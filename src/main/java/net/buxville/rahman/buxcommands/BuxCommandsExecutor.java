@@ -15,8 +15,9 @@ import org.bukkit.entity.Player;
 
 public class BuxCommandsExecutor implements CommandExecutor {
 	public static String chatPrefix = "[BuxCommands]";
-
-	public BuxCommandsExecutor(BuxCommands plugin) {
+	BuxCommands plugin;
+	public BuxCommandsExecutor(BuxCommands instance) {
+		plugin = instance;
 	}
 
 	@Override
@@ -130,7 +131,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 		if ((cmd.getName().equalsIgnoreCase("whohide"))) {
 			if ((p instanceof Player)
 					&& (p.hasPermission("buxcommands.whohide"))) {
-				Who.WhoHide(p);
+				Who.WhoHide(p,plugin);
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED

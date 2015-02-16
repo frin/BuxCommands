@@ -8,7 +8,6 @@ import org.bukkit.inventory.ItemStack;
 ;
 
 public class Hat {
-	@SuppressWarnings({ "deprecation" })
 	public static void HatCommand(Player p) {
 		ItemStack itemInHand = p.getItemInHand();
 		if (itemInHand == null) {
@@ -17,7 +16,7 @@ public class Hat {
 			return;
 		}
 
-		if (itemInHand.getTypeId() >= 256) {
+		if (!itemInHand.getType().isBlock()) {
 			p.sendMessage(ChatColor.RED
 					+ "You cannot use this as a hat. What is wrong with you? Why would you even try that?");
 			return;
