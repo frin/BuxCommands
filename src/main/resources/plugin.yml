@@ -22,6 +22,16 @@ commands:
       description: who command
    whohide:
       description: whohide command
+   w:
+      description: whisper command
+   whisper:
+      description: whisper command
+   r:
+      description: whisper reply command
+   reply:
+      description: whisper reply command
+   forcechannel:
+      description: forcechannel command
 permissions:
    buxcommands.groll:
      description: Gives access to groll command
@@ -35,3 +45,9 @@ permissions:
      description: Gives access to tpc command
    buxcommands.whohide:
      description: Gives access to whohide command
+   buxcommands.whisper:
+     description: Gives access to whisper command
+   buxcommands.reply:
+     description: Gives access to whisper reply command
+   buxcommands.forcechannel:
+     description: Gives access to forcechannel command

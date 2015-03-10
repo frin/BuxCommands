@@ -3,10 +3,13 @@ package net.buxville.rahman.buxcommands;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 
+import net.buxville.rahman.buxcommands.commands.ForceChannel;
 import net.buxville.rahman.buxcommands.commands.GetRank;
 import net.buxville.rahman.buxcommands.commands.GlobalRoll;
 import net.buxville.rahman.buxcommands.commands.Hat;
 import net.buxville.rahman.buxcommands.commands.Teleport;
+import net.buxville.rahman.buxcommands.commands.Whisper;
+import net.buxville.rahman.buxcommands.commands.WhisperReply;
 import net.buxville.rahman.buxcommands.commands.Who;
 
 import org.bukkit.command.CommandExecutor;
@@ -29,6 +32,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 			return false;
 		}
 		Player p = (Player) sender;
+		System.out.println("received command "+cmd.getName());
 		// Tp all players to here Commands
 		if ((cmd.getName().equalsIgnoreCase("acc"))) {
 			if (p instanceof Player) {
@@ -36,7 +40,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -47,7 +51,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -58,7 +62,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -69,7 +73,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -80,7 +84,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -91,7 +95,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -102,7 +106,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -113,7 +117,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -124,7 +128,7 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
 				return false;
 			}
 		}
@@ -136,7 +140,40 @@ public class BuxCommandsExecutor implements CommandExecutor {
 				return false;
 			} else {
 				p.sendMessage(chatPrefix + ChatColor.RED
-						+ "You do not have permissions to do this!");
+						+ " You do not have permissions to do this!");
+				return false;
+			}
+		}
+		// Whisper Command
+		if (cmd.getName().equalsIgnoreCase("w") || cmd.getName().equalsIgnoreCase("whisper")) {
+			if (p instanceof Player) {
+				Whisper.WhisperCommand(p, plugin, args, label);
+				return false;
+			}
+			else {
+				p.sendMessage(chatPrefix + ChatColor.RED + " You do not have permissions to do this!");
+				return false;
+			}
+		}
+		// Whisper Reply Command
+		if (cmd.getName().equalsIgnoreCase("r") || cmd.getName().equalsIgnoreCase("reply")) {
+			if (p instanceof Player) {
+				WhisperReply.WhisperReplyCommand(p, plugin, args, label);
+				return false;
+			}
+			else {
+				p.sendMessage(chatPrefix + ChatColor.RED + " You do not have permissions to do this!");
+				return false;
+			}
+		}
+		// Force Channel Command
+		if (cmd.getName().equalsIgnoreCase("forcechannel")) {
+			if (p instanceof Player && p.hasPermission("buxcommands.forcechannel")) {
+				ForceChannel.ForceChannelCommand(p, plugin, args, label);
+				return false;
+			}
+			else {
+				p.sendMessage(chatPrefix + ChatColor.RED + "You do not have permissions to do this!");
 				return false;
 			}
 		}
